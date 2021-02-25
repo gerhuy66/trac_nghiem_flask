@@ -23,10 +23,13 @@ def home():
 def getQuestion():
     from service import getAllQuestion
     rs = getAllQuestion(mysql)
-    
-
     return jsonify(rs)
 
+@app.route('/getSubject',methods=["GET"])
+def getSubject():
+    from service import getAllSubject
+    rs= getAllSubject(mysql)
+    return jsonify(rs)
 
 
 if __name__ == '__main__':

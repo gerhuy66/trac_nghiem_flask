@@ -4,9 +4,12 @@
 <script src="{{url_for('static', filename='jquery-3.5.1.js')}}"></script>
 <script src="{{url_for('static', filename='axios.js')}}"></script>
 </head>
-<body>
+<body onload="initView()">
     <h3>EXAM</h3>
-    <div id="question_table" style="width: 100%;height: 70%;background-color: rgb(204, 200, 207);overflow: scroll;">
+    <h4>Choose a subject to do exam:</h4>
+    <div id="subjects"></div>
+
+    <div id="question_table" style="margin-top: 20px;width: 100%;height: 70%;background-color: rgb(204, 200, 207);overflow: scroll;">
 
 
 
