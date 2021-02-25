@@ -5,7 +5,7 @@ app = Flask(__name__)
 #database config
 mysql = MySQL()
 app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'Quangphuong156'
+app.config['MYSQL_DATABASE_PASSWORD'] = '1234'
 app.config['MYSQL_DATABASE_DB'] = 'exam_db'
 app.config['MYSQL_DATABASE_Host'] = 'localhost'
 mysql.init_app(app)
@@ -22,7 +22,8 @@ def home():
 @app.route('/getQuestion',methods=["GET"])
 def getQuestion():
     from service import getAllQuestion
-    rs = getAllQuestion(mysql)
+    eId = request.args['eId']
+    rs = getAllQuestion(mysql,eId)
     return jsonify(rs)
 
 @app.route('/getSubject',methods=["GET"])
@@ -31,16 +32,22 @@ def getSubject():
     rs= getAllSubject(mysql)
     return jsonify(rs)
 
-@app.route('/score', methods=['POST'])
-def score():
-	from service import getAllQuestion
-	from service import getDapan
-    cur = getAllQuestion(mysql)
-	cur1 = getDapan(mysql)
-	for x in cauhoi:
-		for y in dapan:
-			if(x == y)
-				i += 1
+@app.route('/getExamsBySub',methods=["GET","POST"])
+def getExamBySubject():
+    from service import getExamBySubject
+    subId = request.args['subId']
+    rs = getExamBySubject(mysql,subId)
+    return jsonify(rs)
+# @app.route('/score', methods=['POST'])
+# def score():
+# 	from service import getAllQuestion
+# 	from service import getDapan
+#     cur = getAllQuestion(mysql)
+# 	cur1 = getDapan(mysql)
+# 	for x in cauhoi:
+# 		for y in dapan:
+# 			if(x == y)
+# 				i += 1
 				
 if __name__ == '__main__':
     app.run(debug=True)
