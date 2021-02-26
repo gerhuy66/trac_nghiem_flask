@@ -74,6 +74,22 @@ function loadExamBySub(subjectId){
     });
 }
 
+function getRadio(){
+    let answers = [];
+      for(let i=1;i<=7;i++){
+          answers.push({value:$(`input[name="option_q${i}"]:checked`,`#answer_option_q${i}`).val()});
+      }
+        $.ajax({
+          url: "/insertAnswer",
+          method: "POST",
+          data: {
+            an_list: answers
+          },
+            success: function(data) {
+            $('#result').html(data);
+          }
+        });    
+    }
 function initView(){
     loadSubject();
 }

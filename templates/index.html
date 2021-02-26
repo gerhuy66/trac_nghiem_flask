@@ -12,9 +12,12 @@
     <div id="exams"></div>
     <div id="question_table" style="margin-top: 20px;width: 100%;height: 70%;background-color: rgb(204, 200, 207);overflow: scroll;">
 
-
-
     </div>
     <button onclick="getQuestion()">BEGIN TEST</button>
+    <button onclick="getRadio()">Submit</button>
+    <form method=post action="/score">
+        <input type="text" name ="mabt">
+        <input type = "submit">
+    </form>
 </body>
 </html>
